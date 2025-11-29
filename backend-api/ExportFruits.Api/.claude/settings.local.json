@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dotnet tool install:*)",
+      "Bash(dotnet tool:*)",
+      "Bash(dotnet ef dbcontext scaffold:*)",
+      "Bash(dotnet build:*)",
+      "Bash(dotnet add:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

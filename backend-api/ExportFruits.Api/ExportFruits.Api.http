@@ -1,0 +1,6 @@
+@ExportFruits.Api_HostAddress = http://localhost:5208
+
+GET {{ExportFruits.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

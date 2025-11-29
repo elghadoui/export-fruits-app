@@ -1,0 +1,42 @@
+using ExportFruits.Api.Data;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
+namespace ExportFruits.Api.Controllers
+{
+    [ApiController]
+    [Route("api/[controller]")]
+    public class VarietesController : ControllerBase
+    {
+        private readonly ExportDbContext _db;
+
+        public VarietesController(ExportDbContext db)
+        {
+            _db = db;
+        }
+
+        // GET: api/varietes
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var varietes = await _db.varietes
+                .OrderBy(v => v.nom)
+                .ToListAsync();
+
+            return Ok(varietes);
+        }
+
+        // GET: api/varietes/5
+        [HttpGet("{id:int}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var variete = await _db.varietes
+                .FirstOrDefaultAsync(v => v.id == id);
+
+            if (variete == null)
+                return NotFound();
+
+            return Ok(variete);
+        }
+    }
+}
